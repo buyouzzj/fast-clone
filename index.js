@@ -13,8 +13,6 @@ if (files.length) {
 
 program
   .version(require('./package.json').version, '-v', '--version')
-
-program
   .command('clone <repo>', 'fast clone repository')
   .alias('c')
   .action(async repo => {
