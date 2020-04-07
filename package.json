@@ -1,6 +1,6 @@
 {
   "name": "fast-clone-github",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "一个快速下载github代码的工具",
   "main": "index.js",
   "scripts": {},
@@ -9,7 +9,7 @@
     "url": "git+https://github.com/heromen/fast-clone.git"
   },
   "bin": {
-    "fc": "./index.js"
+    "fcl": "./bin/fcl"
   },
   "keywords": [],
   "author": "",
@@ -22,8 +22,6 @@
     "chalk": "^4.0.0",
     "commander": "^5.0.0",
     "download-git-repo": "^3.0.2",
-    "inquirer": "^7.1.0",
-    "ora": "^4.0.3",
-    "yargs": "^15.3.1"
+    "ora": "^4.0.3"
   }
 }

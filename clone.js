@@ -1,21 +1,26 @@
+const url = require('url')
 const ora = require('ora');
+const chalk = require('chalk')
 const { promisify } = require('util');
 const download = promisify(require('download-git-repo'));
 
-async function clone(repo, desc) {
-  const process = ora('正在下载...');
+async function clone(repo, dest) {
+  const process = ora('正在下载...\n');
   process.start();
   try {
     // 说明直接克隆的地址
     if (repo.startsWith('http')) {
-      await download(`direct:${repo}`, desc, { clone: true });
+      // https://github.com/lyswhut/lx-music-desktop?utm_source=gold_browser_extension
+      const myURL = url.parse(repo)
+      const downloadUrl = myURL.pathname.slice(1);
+      await download(downloadUrl, dest);
     } else {
-      await download(repo, desc);
+      await download(repo, dest);
     }
-    process.succeed('下载完成');
+    process.succeed(chalk.green('下载完成'));
   } catch (error) {
     console.log(error)
-    process.fail('download Error', error);
+    process.fail('download Error', chalk.red(error));
   }
 }
 
