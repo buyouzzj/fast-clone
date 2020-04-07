@@ -1,15 +1,32 @@
-# usage
+### 一款快速克隆github代码的工具
 
-`npm install fast-clone -g`  
+> 背景：在开发electron代码的过程时，看到有很多不懂的api或者思维方式，于是就想参考其他人写的方法，但是使用`git clone`方式来下载github的代码时经常出现超时或者报一些其他的错误，所以希望通过开发一个命令行的工具来加速下载
 
-`mkdir ant-design-pro`
+# 如何使用
 
-`cd antd-design-pro`
+```bash
+$ npm install fast-clone-github -g
 
-这是一个github的地址：https://github.com/ant-design/ant-design-pro
-ant-design是名字
-ant-design-pro是项目
+$ mkdir ant-design-pro
 
-`fc clone ant-design/ant-design-pro` 
+$ cd antd-design-pro
 
-## todo: 下载太慢，需要提高效率
+$ fcl clone https://github.com/ant-design/ant-design-pro
+```
+
+## todo
+
+1. 全局安装的时候太慢，需要提高效率
+2. gitlab下载
+3. 可以直接创建文件夹（与git clone保持一致）
+
+## 数据对比
+
+|     项目      | fcl  | 原生git |
+| :-----------: | :----: | :-------: |
+| nt-design-pro | 20s  | 3m      |
+|     yargs     | 11s  | 1m      |
+
+### 注意：涉及到electron的项目有可能下载失败，最好将electron的源改成国内的。
+
+改electron源的方法：npm config set ELECTRON_MIRROR=https://npm.taobao.org/mirrors/electron/
