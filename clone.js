@@ -12,7 +12,7 @@ async function clone(repo, dest) {
     if (repo.startsWith('http')) {
       // https://github.com/lyswhut/lx-music-desktop?utm_source=gold_browser_extension
       const myURL = url.parse(repo)
-      const downloadUrl = myURL.pathname.slice(1);
+      const downloadUrl = myURL.pathname.split('.')[0].slice(1);
       await download(downloadUrl, dest);
     } else {
       await download(repo, dest);
