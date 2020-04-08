@@ -10,7 +10,7 @@ async function clone(repo, dest) {
   try {
     // 说明直接克隆的地址
     if (repo.startsWith('http')) {
-      // https://github.com/lyswhut/lx-music-desktop?utm_source=gold_browser_extension
+      // http://gitlab.weierai.com/WeierFE/merchant-web
       const myURL = url.parse(repo)
       const downloadUrl = myURL.pathname.split('.')[0].slice(1);
       await download(downloadUrl, dest);
