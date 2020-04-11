@@ -29,3 +29,14 @@ $ fcl clone https://github.com/ant-design/ant-design-pro.git
 ### 注意：涉及到electron的项目有可能下载失败，最好将electron的源改成国内的。
 
 改electron源的方法：npm config set ELECTRON_MIRROR=https://npm.taobao.org/mirrors/electron/
+
+## QA:
+* 如果碰到
+  ```
+  /usr/local/lib/node_modules/fast-clone-github/node_modules/commander/index.js:835
+        throw new Error(`'${bin}' not executable`);
+        ```
+  这样的问题，是因为没有文件操作权限，可以通过以下操作命令解决
+  ```
+  chmod -R 777 /usr/local/lib/node_modules/fast-clone-github/bin/fcl-clone
+  ```
