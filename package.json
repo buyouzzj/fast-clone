@@ -1,6 +1,6 @@
 {
   "name": "fast-clone-github",
-  "version": "1.0.4",
+  "version": "1.1.0",
   "description": "一个快速下载github代码的工具",
   "main": "index.js",
   "scripts": {},
