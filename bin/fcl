@@ -1,15 +1,8 @@
 #!/usr/bin/env node
 const program = require('commander')
 const chalk = require('chalk')
-const fs = require('fs')
 
 const dest = process.cwd()
-
-const files = fs.readdirSync(dest)
-if (files.length) {
-  console.log(chalk.red('当前目录非空，请创建一个空目录来创建项目！'))
-  return
-}
 
 program
   .version(require('../package.json').version, '-v, --version')

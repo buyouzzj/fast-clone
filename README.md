@@ -11,14 +11,13 @@ $ mkdir ant-design-pro
 
 $ cd antd-design-pro
 
-$ fcl clone https://github.com/ant-design/ant-design-pro
+$ fcl clone https://github.com/ant-design/ant-design-pro.git
 ```
 
 ## todo
 
-1. 全局安装的时候太慢，需要提高效率
-2. gitlab也能正常下载
-3. 可以直接创建文件夹（与git clone保持一致）
+- [] 全局安装的时候太慢，需要提高效率
+- [x]  可以直接创建文件夹（与git clone保持一致）
 
 ## 数据对比
 

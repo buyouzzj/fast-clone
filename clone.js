@@ -1,27 +1,27 @@
-const url = require('url')
+const url = require('url');
 const ora = require('ora');
 const chalk = require('chalk')
 const { promisify } = require('util');
 const download = promisify(require('download-git-repo'));
 
+
 async function clone(repo, dest) {
-  const process = ora('正在下载...\n');
+  const process = ora('cloning...');
   process.start();
-  try {
-    // 说明直接克隆的地址
-    if (repo.startsWith('http')) {
-      // http://gitlab.weierai.com/WeierFE/merchant-web
-      const myURL = url.parse(repo)
-      const downloadUrl = myURL.pathname.split('.')[0].slice(1);
-      await download(downloadUrl, dest);
-    } else {
-      await download(repo, dest);
-    }
-    process.succeed(chalk.green('下载完成'));
-  } catch (error) {
-    console.log(error)
-    process.fail('download Error', chalk.red(error));
+  
+  let timer = null;
+  let index = 0;
+  timer = setInterval(() => {
+    index += 1;
+    console.log(chalk.cyan(`  ${index}s`))
+  }, 1000)
+  const err = await download(repo, dest);
+  if (err) {
+    process.fail(chalk.red(error));
+  } else {
+    process.succeed(chalk.green('done'));
   }
+  clearInterval(timer);
 }
 
 module.exports.clone = clone;

@@ -2,11 +2,22 @@
 const program = require('commander')
 const { clone } = require('../clone')
 const chalk = require('chalk')
+const fs = require('fs')
+const url = require('url')
 
-const dest = process.cwd();
+// http://gitlab.weierai.com/WeierFE/merchant-web
 
 program
   .action(async repo => {
-    await clone(repo.args[0], dest);
+    const myURL = repo.args[0]
+    if (!myURL.startsWith('http')) {
+      console.log(chalk.red('地址必须以http开头'))
+      return
+    }
+    // 拿到user/project
+    const downloadUrl = url.parse(myURL).pathname.split('.')[0].slice(1);
+    // 需要克隆到的目录
+    const dest = process.cwd() + '/' + downloadUrl.split('/')[1];
+    await clone(downloadUrl, dest);
   })
 program.parse(process.argv)
